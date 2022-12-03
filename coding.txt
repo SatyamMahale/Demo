@@ -1,0 +1,59 @@
+
+Satyam Mahale
+8421982926
+
+
+
+
+
+
+
+
+
+
+this is my code 
+class PlanetaryData:
+    
+    def __init__(self):
+        self.storage={}
+    
+    def createdatastructer(self):
+        noofplanets=int(input())
+        for i in range(noofplanets):
+            planet=input()
+            atmosphericgases=[str(i) for i in input().split()]
+            Moons=int(input())
+            Rings=input("enter input as  Yes or No")
+            planetinfo={}
+            planetinfo['atmosphericgases']=atmosphericgases
+            planetinfo['moons']=Moons
+            planetinfo['rings']=Rings
+            self.storage[planet]=planetinfo
+        return self.storage
+    def countofmoons(self):
+        count=0
+        for planet,stats in self.storage.items():
+            if stats['rings']=='Yes':
+                count+=stats['moons']
+        return count
+    
+    def foundonmaxplanets(self):
+         list_gases=[]
+        for values in self.storage.values():
+            gas=values['atmosphericgases']
+            for i in gas:
+                list_gases.append(i)
+        maxi=Counter(list_gases)
+        item=0
+        tup=None
+        for items,values in maxi.items():
+            if values>item:
+                item=values
+                tup=((items,values))
+        print(tup[0])
+      
+
+solarsystem=PlanetaryData()
+print(solarsystem.createdatastructer())
+solarsystem.countofmoons()
+solarsystem.foundonmaxplanets()
